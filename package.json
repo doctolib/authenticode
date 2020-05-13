@@ -1,0 +1,32 @@
+{
+  "name": "authenticode",
+  "version": "1.0.0",
+  "description": "Get authenticode information from Windows runnables",
+  "main": "dist/authenticode.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doctolib/authenticode.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "authenticode",
+    "powershell"
+  ],
+  "author": "Victor Schubert <victor.schubert@doctolib.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doctolib/authenticode/issues"
+  },
+  "homepage": "https://github.com/doctolib/authenticode#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^25.5.1",
+    "typescript": "^3.9.2"
+  }
+}
