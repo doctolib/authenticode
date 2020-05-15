@@ -1,7 +1,7 @@
 import { getAuthenticode, summary } from './authenticode'
 
 function path(kind: string): string {
-  return `./tests/integration/assets/authenticode/sign-${kind}.ps1`
+  return `./src/sign-${kind}.ps1`
 }
 
 describe(getAuthenticode, () => {
