@@ -50,11 +50,13 @@ export interface SignatureSummary {
 }
 
 export async function getAuthenticode(path: string): Promise<Signature> {
+  const escapedPath = path.replace('"', '`"')
+  const command = `Get-AuthenticodeSignature "${escapedPath}" | ConvertTo-Json -Compress`
+  const encodedCommand = Buffer.from(command, 'utf16le').toString('base64')
   const { stdout } = await promisify(execFile)('powershell.exe', [
     '-NoProfile',
-    '-Command',
-    "'Get-AuthenticodeSignature $args | ConvertTo-Json -Compress'",
-    path,
+    '-EncodedCommand',
+    encodedCommand
   ])
   return JSON.parse(stdout)
 }
