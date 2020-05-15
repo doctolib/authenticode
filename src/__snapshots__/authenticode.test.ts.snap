@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAuthenticode result matches snapshot for bad signature 1`] = `
+Object {
+  "IsOSBinary": false,
+  "Path": Any<String>,
+  "SignatureType": 1,
+  "SignerCertificate": Anything,
+  "Status": 3,
+  "StatusMessage": Any<String>,
+  "TimeStamperCertificate": null,
+}
+`;
+
+exports[`getAuthenticode result matches snapshot for good signature 1`] = `
+Object {
+  "IsOSBinary": false,
+  "Path": Any<String>,
+  "SignatureType": 1,
+  "SignerCertificate": Anything,
+  "Status": 0,
+  "StatusMessage": Any<String>,
+  "TimeStamperCertificate": null,
+}
+`;
+
+exports[`getAuthenticode result matches snapshot for ugly signature 1`] = `
+Object {
+  "IsOSBinary": false,
+  "Path": Any<String>,
+  "SignatureType": 0,
+  "SignerCertificate": null,
+  "Status": 2,
+  "StatusMessage": Any<String>,
+  "TimeStamperCertificate": null,
+}
+`;
