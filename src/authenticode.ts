@@ -53,7 +53,7 @@ export async function getAuthenticode(path: string): Promise<Signature> {
   const { stdout } = await promisify(execFile)('powershell.exe', [
     '-NoProfile',
     '-Command',
-    'Get-AuthenticodeSignature $args[0] | ConvertTo-Json -Compress',
+    "'Get-AuthenticodeSignature $args | ConvertTo-Json -Compress'",
     path,
   ])
   return JSON.parse(stdout)

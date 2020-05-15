@@ -4,8 +4,7 @@ function path(kind: string): string {
   return `./tests/integration/assets/authenticode/sign-${kind}.ps1`
 }
 
-// @ts-ignore
-describe.onWindows(getAuthenticode, () => {
+describe(getAuthenticode, () => {
   it.each([
     ['good', expect.anything()],
     ['bad', expect.anything()],
@@ -33,8 +32,7 @@ const doctolibSubject = [
   'OID.2.5.4.15=Private Organization',
 ].join(', ')
 
-// @ts-ignore
-describe.onWindows(summary, () => {
+describe(summary, () => {
   it.each([
     ['good', { status: 'Valid', type: 'Authenticode', subject: doctolibSubject }],
     ['bad', { status: 'HashMismatch', type: 'Authenticode', subject: doctolibSubject }],

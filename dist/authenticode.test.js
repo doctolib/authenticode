@@ -1,15 +1,17 @@
-import { getAuthenticode, summary } from './authenticode';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const authenticode_1 = require("./authenticode");
 function path(kind) {
     return `./tests/integration/assets/authenticode/sign-${kind}.ps1`;
 }
 // @ts-ignore
-describe.onWindows(getAuthenticode, () => {
+describe.onWindows(authenticode_1.getAuthenticode, () => {
     it.each([
         ['good', expect.anything()],
         ['bad', expect.anything()],
         ['ugly', null],
     ])('result matches snapshot for %s signature', async (kind, SignerCertificate) => {
-        const signature = await getAuthenticode(path(kind));
+        const signature = await authenticode_1.getAuthenticode(path(kind));
         expect(signature).toMatchSnapshot({
             StatusMessage: expect.any(String),
             Path: expect.any(String),
@@ -30,13 +32,13 @@ const doctolibSubject = [
     'OID.2.5.4.15=Private Organization',
 ].join(', ');
 // @ts-ignore
-describe.onWindows(summary, () => {
+describe.onWindows(authenticode_1.summary, () => {
     it.each([
         ['good', { status: 'Valid', type: 'Authenticode', subject: doctolibSubject }],
         ['bad', { status: 'HashMismatch', type: 'Authenticode', subject: doctolibSubject }],
         ['ugly', { status: 'NotSigned', type: 'None', subject: null }],
     ])('result matches snapshot for %s signature', async (kind, expected) => {
-        const signature = await getAuthenticode(path(kind));
-        expect(summary(signature)).toEqual(expected);
+        const signature = await authenticode_1.getAuthenticode(path(kind));
+        expect(authenticode_1.summary(signature)).toEqual(expected);
     });
 });
