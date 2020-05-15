@@ -7,7 +7,7 @@ executables (binaries or Powershell scripts).
 This module wraps the Powershell cmdlet _Get-Authenticode_ to return
 information about signatures of executable files to Node.JS.
 
-``ts
+```ts
 import { getAuthenticode, SignatureStatus } from 'authenticode'
 
 async function isSigned(path: string): Promise<boolean> {
