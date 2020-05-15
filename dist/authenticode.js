@@ -22,11 +22,13 @@ var SignatureType;
 })(SignatureType = exports.SignatureType || (exports.SignatureType = {}));
 const statusWithSignature = [SignatureStatus.Valid, SignatureStatus.HashMismatch, SignatureStatus.NotTrusted];
 async function getAuthenticode(path) {
+    const escapedPath = path.replace('"', '`"');
+    const command = `Get-AuthenticodeSignature "${escapedPath}" | ConvertTo-Json -Compress`;
+    const encodedCommand = Buffer.from(command, 'utf16le').toString('base64');
     const { stdout } = await util_1.promisify(child_process_1.execFile)('powershell.exe', [
         '-NoProfile',
-        '-Command',
-        'Get-AuthenticodeSignature $args[0] | ConvertTo-Json -Compress',
-        path,
+        '-EncodedCommand',
+        encodedCommand
     ]);
     return JSON.parse(stdout);
 }

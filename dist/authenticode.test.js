@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const authenticode_1 = require("./authenticode");
 function path(kind) {
-    return `./tests/integration/assets/authenticode/sign-${kind}.ps1`;
+    return `./src/sign-${kind}.ps1`;
 }
-// @ts-ignore
-describe.onWindows(authenticode_1.getAuthenticode, () => {
+describe(authenticode_1.getAuthenticode, () => {
     it.each([
         ['good', expect.anything()],
         ['bad', expect.anything()],
@@ -31,8 +30,7 @@ const doctolibSubject = [
     'SERIALNUMBER=794598813',
     'OID.2.5.4.15=Private Organization',
 ].join(', ');
-// @ts-ignore
-describe.onWindows(authenticode_1.summary, () => {
+describe(authenticode_1.summary, () => {
     it.each([
         ['good', { status: 'Valid', type: 'Authenticode', subject: doctolibSubject }],
         ['bad', { status: 'HashMismatch', type: 'Authenticode', subject: doctolibSubject }],
