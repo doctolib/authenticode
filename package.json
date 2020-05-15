@@ -1,6 +1,6 @@
 {
   "name": "authenticode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get authenticode information from Windows runnables",
   "main": "dist/authenticode.js",
   "scripts": {
@@ -24,8 +24,12 @@
   },
   "homepage": "https://github.com/doctolib/authenticode#readme",
   "jest": {
-    "roots": ["<rootDir>/src"],
-    "transform": { "\\.ts$": "ts-jest" }
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "\\.ts$": "ts-jest"
+    }
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
