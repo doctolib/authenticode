@@ -1,5 +1,17 @@
 # Authenticode for Node.JS
 
+## Installation
+
+```bash
+# with npm
+npm install authenticode
+
+# with yarn
+yarn add authenticode
+```
+
+## What is this about
+
 [Authenticode](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/authenticode)
 is Microsoft’s code-signing mechanism which allows identifying the publisher of
 executables (binaries or Powershell scripts).
